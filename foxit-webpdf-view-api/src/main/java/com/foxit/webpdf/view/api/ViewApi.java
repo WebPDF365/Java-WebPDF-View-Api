@@ -30,8 +30,8 @@ import com.foxit.webpdf.view.api.exception.UploadDocumentException;
  *
  */
 public class ViewApi {
-	//private static String apiServiceRootUrl = "http://api.webpdf365.com/api/v1.0";
-	private static String apiServiceRootUrl = "http://it-api.webpdf365.com/api/v1.0";
+	//private String apiServiceRootUrl = "http://api.webpdf365.com/api/v1.0";
+	private String apiServiceRootUrl = "http://it-api.webpdf365.com/api/v1.0";
 	private ApiService apiService;
 	private String apiKey;
 	protected static final Logger log = Logger.getLogger(ViewApi.class);
@@ -47,6 +47,23 @@ public class ViewApi {
 	 */
 	public ViewApi(String apiKey) {
 		this.apiKey = apiKey;
+		RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(
+				apiServiceRootUrl).build();
+		apiService = restAdapter.create(ApiService.class);
+	}
+	
+	/**
+	 * Initializes the ViewApi object.
+	 * Ensures we have access to cURL,
+	 * that the api_key is set,
+	 * and sets various URLs needed for interacting with the API.
+	 * 
+	 * @param String apiKey
+	 * @param String apiServiceRootUrl
+	 */
+	public ViewApi(String apiKey, String apiServiceRootUrl) {
+		this.apiKey = apiKey;
+		this.apiServiceRootUrl = apiServiceRootUrl;
 		RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(
 				apiServiceRootUrl).build();
 		apiService = restAdapter.create(ApiService.class);
