@@ -15,16 +15,14 @@ public class Example {
 		/**
 		 * Manipulate documents using the API.
 		 */
-		//String api_key = "YOUR_API_KEY";
-		String api_key = "e0dbfa00b9a743a1ad1bb398545bed52";
+		String api_key = "YOUR_API_KEY";
 		ViewApi viewApi = new ViewApi(api_key);
 		
 		/**
 		 *  Create new document we want to upload.
 		 *  用URL的方式
 		 */
-		//ViewDocument viewDocumentByURL = new ViewDocument("test document", "URL_TO_FILE");
-		ViewDocument viewDocumentByURL = new ViewDocument("f886haoc.pdf", "http://www.irs.gov/pub/irs-pdf/f886haoc.pdf");
+		ViewDocument viewDocumentByURL = new ViewDocument("test document", "URL_TO_FILE");
 		DocumentBean documentBeanByURL = null;
 		try {
 			documentBeanByURL = viewApi.upload(viewDocumentByURL);
@@ -47,8 +45,7 @@ public class Example {
 		 *  Create new document we want to upload.
 		 *  用Path的方式
 		 */
-		//ViewDocument viewDocumentByPath = new ViewDocument("PATH_TO_FILE");
-		ViewDocument viewDocumentByPath = new ViewDocument("C:\\Users\\jining_huang\\Desktop\\测试申请表.pdf");
+		ViewDocument viewDocumentByPath = new ViewDocument("PATH_TO_FILE");
 		DocumentBean documentBeanByPath = null;
 		try {
 			documentBeanByPath = viewApi.upload(viewDocumentByPath);

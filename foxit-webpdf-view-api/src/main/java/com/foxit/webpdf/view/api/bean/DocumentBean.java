@@ -10,12 +10,12 @@ package com.foxit.webpdf.view.api.bean;
  */
 public class DocumentBean extends BaseBean {
 	/**
-	 * A unique string identifying this document.
+	 * The ID of the document uploaded
 	 */
 	private String docId;
 	
 	/**
-	 * The name of this document.
+	 * File name
 	 */
 	private String name;
 

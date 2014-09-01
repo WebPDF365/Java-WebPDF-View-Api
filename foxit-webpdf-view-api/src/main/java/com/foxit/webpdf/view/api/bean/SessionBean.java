@@ -10,19 +10,19 @@ package com.foxit.webpdf.view.api.bean;
  */
 public class SessionBean extends BaseBean {
 	/**
-	 * 新创建的session Id
+	 * New session ID
 	 */
 	private String sessionId;
 	
 	/**
-	 * Session Id过期日期
+	 * Session ID expiry date
 	 */
 	private Long expiryDate;
 	
 	private ViewUrl urls;
 
 	/**
-	 * SessionId  是否长期有效的标志…
+	 * Whether sessionId is long-term valid, default is false
 	 */
 	private boolean infinite;
 

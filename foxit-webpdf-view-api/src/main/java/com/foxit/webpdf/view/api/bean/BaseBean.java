@@ -10,12 +10,12 @@ package com.foxit.webpdf.view.api.bean;
  */
 public class BaseBean {
 	/**
-	 * 错误信息代码，0:成功，其它:发生错误
+	 * Error information code, 0: succeed; other: error
 	 */
 	private int error;
 
 	/**
-	 * 对应返回的详细信息描述
+	 * Error message
 	 */
 	private String msg;
 	

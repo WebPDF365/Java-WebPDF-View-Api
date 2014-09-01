@@ -32,10 +32,10 @@ public interface ApiService {
 
 	@Multipart
 	@POST("/documents")
-	DocumentBean uploadDocumentByMultipart(@Query("api_key") String apiKey, @Query("userId") String userId, @Query("engine") int engine, @Part("file") TypedFile file);
+	DocumentBean uploadDocumentByMultipart(@Query("api_key") String apiKey, @Query("userId") String userId, @Part("file") TypedFile file);
 	
 	@POST("/documents")
-	DocumentBean uploadDocumentByMultipartOutput(@Query("api_key") String apiKey, @Query("userId") String userId, @Query("engine") int engine, @Body MultipartTypedOutput file);
+	DocumentBean uploadDocumentByMultipartOutput(@Query("api_key") String apiKey, @Query("userId") String userId, @Body MultipartTypedOutput file);
 	
 	@Headers("content-type: application/json")
 	@DELETE("/documents/{docId}")

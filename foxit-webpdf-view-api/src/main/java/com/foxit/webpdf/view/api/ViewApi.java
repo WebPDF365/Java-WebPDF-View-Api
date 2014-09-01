@@ -30,8 +30,7 @@ import com.foxit.webpdf.view.api.exception.UploadDocumentException;
  *
  */
 public class ViewApi {
-	//private String apiServiceRootUrl = "http://api.webpdf365.com/api/v1.0";
-	private String apiServiceRootUrl = "http://it-api.webpdf365.com/api/v1.0";
+	private String apiServiceRootUrl = "http://api.webpdf365.com/api/v1.0";
 	private ApiService apiService;
 	private String apiKey;
 	protected static final Logger log = Logger.getLogger(ViewApi.class);
@@ -101,12 +100,12 @@ public class ViewApi {
 			}
 
 			TypedFile typedFile = new TypedFile("multipart/form-data", file);
-			docBean = apiService.uploadDocumentByMultipart(apiKey, "", 0, typedFile);
+			docBean = apiService.uploadDocumentByMultipart(apiKey, "", typedFile);
 		} else if (data != null) {
 			TypedByteArrayApi typedByteArray = new TypedByteArrayApi("multipart/form-data", data, doc.getFileName());
 			MultipartTypedOutput mtOutput = new MultipartTypedOutput();
 			mtOutput.addPart("file", typedByteArray);
-			docBean = apiService.uploadDocumentByMultipartOutput(apiKey, "", 0, mtOutput);
+			docBean = apiService.uploadDocumentByMultipartOutput(apiKey, "", mtOutput);
 		} else {
 			String msg = "Missing file information. url or file path, or file data must be set.";
 			log.warn(msg);
