@@ -71,7 +71,7 @@ public class Example {
 		 *  用文件数据的方式
 		 */
 		byte[] BYTEDATA_TO_FILE = {10,10,10,10,10};
-		ViewDocument viewDocumentByData = new ViewDocument("test document", BYTEDATA_TO_FILE);
+		ViewDocument viewDocumentByData = new ViewDocument("test document2", BYTEDATA_TO_FILE);
 		DocumentBean documentBeanByData = null;
 		try {
 			documentBeanByData = viewApi.upload(viewDocumentByData);
