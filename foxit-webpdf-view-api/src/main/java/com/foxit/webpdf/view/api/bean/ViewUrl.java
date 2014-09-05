@@ -15,7 +15,7 @@ public class ViewUrl {
 	private String view;
 	
 	/**
-	 * url parameter when use Viewer.js to embed document
+	 * URL parameter when use Viewer.js to embed document
 	 */
 	private String assets;
 	

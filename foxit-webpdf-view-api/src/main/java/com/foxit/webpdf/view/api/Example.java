@@ -20,7 +20,7 @@ public class Example {
 		
 		/**
 		 *  Create new document we want to upload.
-		 *  用URL的方式
+		 *  Use URL.
 		 */
 		ViewDocument viewDocumentByURL = new ViewDocument("test document", "URL_TO_FILE");
 		DocumentBean documentBeanByURL = null;
@@ -43,7 +43,7 @@ public class Example {
 		
 		/**
 		 *  Create new document we want to upload.
-		 *  用Path的方式
+		 *  Use Path.
 		 */
 		ViewDocument viewDocumentByPath = new ViewDocument("PATH_TO_FILE");
 		DocumentBean documentBeanByPath = null;
@@ -68,7 +68,7 @@ public class Example {
 		
 		/**
 		 *  Create new document we want to upload.
-		 *  用文件数据的方式
+		 *  Use document data.
 		 */
 		byte[] BYTEDATA_TO_FILE = {10,10,10,10,10};
 		ViewDocument viewDocumentByData = new ViewDocument("test document2", BYTEDATA_TO_FILE);

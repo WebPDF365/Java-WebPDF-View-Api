@@ -18,10 +18,10 @@ import com.foxit.webpdf.view.api.exception.ParameterTypeException;
 import com.foxit.webpdf.view.api.exception.UploadDocumentException;
 
 /**
- * Class ViewApi
+ * Class ViewAPI
  * 
- * Webpdf View API implementation.
- * Allows you to easily work with the Webpdf View API,
+ * WebPDF Cloud API implementation.
+ * Allows you to easily work with the WebPDF Cloud API,
  * uploading, deleting, and viewing documents.
  * 
  * @link http://api.webpdf365.com @endlink
@@ -37,12 +37,12 @@ public class ViewApi {
 	
 	/**
 	 * Initializes the ViewApi object.
-	 * Ensures we have access to cURL,
+	 * Ensure the access to cURL,
 	 * that the api_key is set,
 	 * and sets various URLs needed for interacting with the API.
 	 * 
 	 * @param String apiKey
-	 * 	API Key for your Webpdf View Application.	
+	 * 	API Key for your WebPDF View Application.
 	 */
 	public ViewApi(String apiKey) {
 		this.apiKey = apiKey;
@@ -53,7 +53,7 @@ public class ViewApi {
 	
 	/**
 	 * Initializes the ViewApi object.
-	 * Ensures we have access to cURL,
+	 * Ensure access to cURL,
 	 * that the api_key is set,
 	 * and sets various URLs needed for interacting with the API.
 	 * 

@@ -7,7 +7,7 @@ public class DocumentDTO {
 	private String fileName;
 	
 	/**
-	 * The URL of the document to be uploaded and converted
+	 * The URL of the document to be uploaded and converted.
 	 */
 	private String url;
 

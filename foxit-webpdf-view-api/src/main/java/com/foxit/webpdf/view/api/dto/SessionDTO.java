@@ -12,7 +12,7 @@ public class SessionDTO {
 	private Integer expiry;
 	
 	/**
-	 * Whether sessionId is long-term valid, default is false
+	 * Whether sessionId is long-term valid, default is false.
 	 */
 	private Boolean infinite;
 

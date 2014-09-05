@@ -1,13 +1,13 @@
 Documentation
 -------------
-For general API documentaion, please review the [WebPDF View API Documentation](http://api.webpdf365.com/ApiList).
+For general API documentation, please refer to the [WebPDF View API Documentation](http://api.webpdf365.com/ApiList).
 
 
 Installation:
-First, get the library.You can download the JAR here: http://api.webpdf365.com/download/foxit-webpdf-view-api.jar
+First, get the library. You can download the JAR here: http://api.webpdf365.com/download/foxit-webpdf-view-api.jar
 Add foxit-webpdf-view-api.jar to your classpath.
 
-Intializing the API class:
+Initializing the API class:
 ```java
 String api_key = "YOUR_API_KEY";
 ViewApi viewApi = new ViewApi(api_key);

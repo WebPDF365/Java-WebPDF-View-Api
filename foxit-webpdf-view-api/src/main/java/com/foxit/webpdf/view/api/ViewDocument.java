@@ -19,17 +19,17 @@ public class ViewDocument {
 	private String fileName;
 	
 	/**
-	 * URL to the document you want to upload.
+	 * URL of the document you want to upload.
 	 */
 	private String fileUrl;
 	
 	/**
-	 * Internal path to the document you want to upload.
+	 * Internal path of the document you want to upload.
 	 */
 	private String filePath;
 	
 	/**
-	 * Byte Data to the document you want to upload.
+	 * Byte Data of the document you want to upload.
 	 */
 	private byte[] fileData = null;
 	

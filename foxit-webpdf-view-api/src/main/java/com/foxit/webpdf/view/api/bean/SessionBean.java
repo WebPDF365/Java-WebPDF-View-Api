@@ -1,7 +1,7 @@
 package com.foxit.webpdf.view.api.bean;
 
 /**
- * 调用阅读文档API,返回处理信息类
+ * Call viewing document API, return process information class.
  * 
  * @link http://api.webpdf365.com @endlink
  * 
