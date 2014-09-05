@@ -137,8 +137,8 @@ public class ViewApi {
 	 * 
 	 * @param Map<String, Object> params
 	 * 	A key-value pair of POST params
-	 * 		Integer expiry -- 以当前时间开始的session过期时间，单位为分钟，默认值为60,不能够等于负数与0
-	 * 		Boolean infinite -- SessionId是否长期有效的标志, 默认为false
+	 * 		Integer expiry -- Expiry time of the session starting from current time, in minutes, default is 60, can not be negative number or 0.
+	 * 		Boolean infinite -- Whether SessionId is always valid, default is false.
 	 * 
 	 * @return SessionBean
 	 * 	The response is an object converted from JSON
