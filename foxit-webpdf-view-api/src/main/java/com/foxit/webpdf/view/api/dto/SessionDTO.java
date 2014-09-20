@@ -9,7 +9,7 @@ public class SessionDTO {
 	/**
 	 * Expiry time of the session starting from current time, in minutes, default is 60.
 	 */
-	private Integer expiry;
+	private Long expiry;
 	
 	/**
 	 * Whether sessionId is long-term valid, default is false.
@@ -24,11 +24,11 @@ public class SessionDTO {
 		this.docId = docId;
 	}
 
-	public int getExpiry() {
+	public Long getExpiry() {
 		return expiry;
 	}
 
-	public void setExpiry(int expiry) {
+	public void setExpiry(Long expiry) {
 		this.expiry = expiry;
 	}
 

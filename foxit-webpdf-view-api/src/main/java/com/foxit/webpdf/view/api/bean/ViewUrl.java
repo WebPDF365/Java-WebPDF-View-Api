@@ -17,7 +17,7 @@ public class ViewUrl {
 	/**
 	 * URL parameter when use Viewer.js to embed document
 	 */
-	private String assets;
+	private String asserts;
 	
 	public String getView() {
 		return view;
@@ -27,11 +27,11 @@ public class ViewUrl {
 		this.view = view;
 	}
 
-	public String getAssets() {
-		return assets;
+	public String getAsserts() {
+		return asserts;
 	}
 
-	public void setAssets(String assets) {
-		this.assets = assets;
+	public void setAsserts(String asserts) {
+		this.asserts = asserts;
 	}
 }

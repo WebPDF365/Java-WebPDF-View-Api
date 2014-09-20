@@ -12,6 +12,8 @@ import retrofit.mime.TypedFile;
 import com.foxit.webpdf.view.api.bean.BaseBean;
 import com.foxit.webpdf.view.api.bean.DocumentBean;
 import com.foxit.webpdf.view.api.bean.SessionBean;
+import com.foxit.webpdf.view.api.bean.SessionInfoBean;
+import com.foxit.webpdf.view.api.bean.SessionInfoListBean;
 import com.foxit.webpdf.view.api.dto.DocumentDTO;
 import com.foxit.webpdf.view.api.dto.SessionDTO;
 import com.foxit.webpdf.view.api.exception.ParameterTypeException;
@@ -30,7 +32,7 @@ import com.foxit.webpdf.view.api.exception.UploadDocumentException;
  *
  */
 public class ViewApi {
-	private String apiServiceRootUrl = "http://api.webpdf365.com/api/v1.0";
+	private String apiServiceRootUrl = "https://api.webpdf365.com/api/v1.0";
 	private ApiService apiService;
 	private String apiKey;
 	protected static final Logger log = Logger.getLogger(ViewApi.class);
@@ -88,7 +90,7 @@ public class ViewApi {
 			DocumentDTO docDto = new DocumentDTO();
 			docDto.setFileName(doc.getFileName());
 			docDto.setUrl(doc.getFileUrl());
-			docBean = apiService.uploadDocument(apiKey, "", docDto);
+			docBean = apiService.uploadDocument(apiKey, docDto);
 		} else if (path != null && !path.isEmpty()) {
 			File file = null;
 			try {
@@ -100,12 +102,12 @@ public class ViewApi {
 			}
 
 			TypedFile typedFile = new TypedFile("multipart/form-data", file);
-			docBean = apiService.uploadDocumentByMultipart(apiKey, "", typedFile);
+			docBean = apiService.uploadDocumentByMultipart(apiKey, typedFile);
 		} else if (data != null) {
 			TypedByteArrayApi typedByteArray = new TypedByteArrayApi("multipart/form-data", data, doc.getFileName());
 			MultipartTypedOutput mtOutput = new MultipartTypedOutput();
 			mtOutput.addPart("file", typedByteArray);
-			docBean = apiService.uploadDocumentByMultipartOutput(apiKey, "", mtOutput);
+			docBean = apiService.uploadDocumentByMultipartOutput(apiKey, mtOutput);
 		} else {
 			String msg = "Missing file information. url or file path, or file data must be set.";
 			log.warn(msg);
@@ -124,7 +126,7 @@ public class ViewApi {
 	 * 	The response is an object converted from JSON
 	 */
 	public BaseBean delete(String docId) {
-		BaseBean baseBean = apiService.deleteDocument(apiKey, "", docId);
+		BaseBean baseBean = apiService.deleteDocument(apiKey, docId);
 		return baseBean;
 	}
 	
@@ -137,7 +139,7 @@ public class ViewApi {
 	 * 
 	 * @param Map<String, Object> params
 	 * 	A key-value pair of POST params
-	 * 		Integer expiry -- Expiry time of the session starting from current time, in minutes, default is 60, can not be negative number or 0.
+	 * 		Long expiry -- Expiry time of the session starting from current time, in minutes, default is 60, can not be negative number or 0.
 	 * 		Boolean infinite -- Whether SessionId is always valid, default is false.
 	 * 
 	 * @return SessionBean
@@ -150,12 +152,12 @@ public class ViewApi {
 		sessionDTO.setDocId(docId);
 		if (params != null && params.containsKey("expiry")) {
 			Object expiry = params.get("expiry");
-			if (!expiry.getClass().equals(Integer.class)) {
-				String msg = "Parameter expiry type not Insteger.";
+			if (!(expiry.getClass().equals(Long.class) || expiry.getClass().equals(Integer.class))) {
+				String msg = "Parameter expiry type not Long or Integer.";
 				log.warn(msg);
 				throw new ParameterTypeException(msg);
 			}
-			sessionDTO.setExpiry((Integer) expiry);
+			sessionDTO.setExpiry(Long.parseLong(expiry.toString()));
 		}
 		
 		if (params != null && params.containsKey("infinite")) {
@@ -167,7 +169,59 @@ public class ViewApi {
 			}
 			sessionDTO.setInfinite((Boolean) infinite);
 		}
-		sessionBean = apiService.createSession(apiKey, "", sessionDTO);
+		sessionBean = apiService.createSession(apiKey, sessionDTO);
 		return sessionBean;
+	}
+	
+	/**
+	 * Get session information based on session ID
+	 * 
+	 * @param String sessionId
+	 * 	The sessionId of the Session ID to get session information
+	 * 
+	 * @return SessionInfoBean
+	 * 	The response is an object converted from JSON
+	 */
+	public SessionInfoBean getSessionInfo(String sessionId) {
+		return apiService.getSessionInfo(apiKey, sessionId);
+	}
+	
+	/**
+	 * Delete session information based on session ID
+	 * 
+	 * @param String sessionId
+	 * 	The sessionId of the Session ID to delete
+	 * 
+	 * @return BaseBean
+	 * 	The response is an object converted from JSON
+	 */
+	public BaseBean deleteSession(String sessionId) {
+		return apiService.deleteSession(apiKey, sessionId);
+	}
+	
+	/**
+	 * Search session information based on document ID
+	 * 
+	 * @param String docId
+	 *  The docId of the file to search session information
+	 * 
+	 * @return SessionInfoListBean
+	 *  The response is an object converted from JSON
+	 */
+	public SessionInfoListBean getSessionInfoByDocId(String docId) {
+		return apiService.getSessionInfoByDocId(apiKey, docId);
+	}
+	
+	/**
+	 * Delete session information based on document ID
+	 * 
+	 * @param String docId
+	 * 	The docId of the file to delete session
+	 * 
+	 * @return BaseBean
+	 * 	The response is an object converted from JSON
+	 */
+	public BaseBean deleteSessionByDocId(String docId) {
+		return apiService.deleteSessionByDocId(apiKey, docId);
 	}
 }
